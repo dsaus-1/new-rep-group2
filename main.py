@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
+
 import json
+from time import sleep
 
 import consts
 from hanlders import categories, products, set_hello_message, unknown_message, cart
@@ -32,18 +35,19 @@ def main(data):
 
 if __name__ == '__main__':
     while True:
-        # Первый вариант сделать через ввод JSON в файл
-        json_data = input('JSON: ')
-        result = main(json.loads(json_data))
-        print(result)
-
-        # Второй вариант сделать через вписывание данных в файл, тут нужно выбрать, мне кажется, второй вариант будет интереснее
         with open('data/command.json') as command_file:
-            result = main(json.load(command_file))
+            file_data = command_file.read()
+        try:
+            result = main(json.loads(file_data))
 
-        with open('data/command.json', 'w') as command_file:
-            command_file.write('')
-        print(result)
+            print(result)
 
-        if result == 0:
-            break
+            f = open('data/command.json', 'r+')
+            f.truncate(0)
+
+            if result == 0:
+                break
+
+        except:
+            print('Ожидаю команды... ')
+            sleep(2)
