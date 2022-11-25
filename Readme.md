@@ -51,7 +51,7 @@
 ```json
 {
     "action": 0,
-    "filter": {}
+    "data": {}
 }
 ```
 
@@ -75,7 +75,7 @@
 ```json
 {
     "action": 1,
-    "filter": {}
+    "data": {}
 }
 ```
 
@@ -99,7 +99,7 @@
 ```json
 {
     "action": 2,
-    "filter": {
+    "data": {
         "price": ['>100'|'<100'|'<=100'|'>=100'|None],
         "category": <int|None>
     }
@@ -129,7 +129,7 @@
 ```json
 {
     "action": 4,
-    "filter": {
+    "data": {
       "id": <int>
     }
 }
@@ -162,7 +162,7 @@
 ```json
 {
     "action": 3,
-    "filter": {}
+    "data": {}
 }
 ```
 
@@ -186,7 +186,7 @@
 ```json
 {
     "action": 5,
-    "filter": {
+    "data": {
       "id": 1,
       "count": 5
     }
