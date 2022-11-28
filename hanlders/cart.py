@@ -19,7 +19,7 @@ def get_cart(data):
                 }
         for i in read_cart:
             count += 1
-            output.append(f"{count}. {i['name']} ({i['price']} руб/кг добавлено {i['num']} штук")
+            output.append(f"{count}. {i['name']} ({i['price']} руб/кг) добавлено {i['num']} штук")
         return {
             "code": 200,
             "message": '\n'.join(output)
