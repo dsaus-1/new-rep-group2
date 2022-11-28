@@ -135,4 +135,16 @@ def get_product_list(data, dat={}):
 
 
 def get_single_product(data):
-    pass
+    '''Выводит информацию по продукту по заданному id '''
+    # path_catalog = os.path.join(os.path.dirname(__file__), 'data/catalog.json') # надо или не надо
+    request_user_id = data["data"]["id"]  # итоговый айдишник, который запрашиавает пользователь
+    # with open(path_catalog, encoding='utf-8') as json_file: # надо или не надо
+    with open('data/catalog.json', encoding='utf-8') as json_file:
+        catalog_list = json.load(json_file)
+    for i in catalog_list:
+        for j in i['products']:
+            if request_user_id in j.values():
+                write = f'''{j["name"]}\nЦена: {j["price"]} за кг\nОстаток на складе: {j["balance"]} {j["unit"]}\nОписание: {j["description"]}'''
+                return {"code": 200, "message": write}
+    else:
+        return {"code": 404, "message": "Товара с таким номером не найдено"}
