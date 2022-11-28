@@ -34,7 +34,7 @@ def get_cart(data):
         read_cart = json.load(read_file)
         count = 0
         output = []
-        if read_cart == []:
+        if not size:
             return {
                 "code": 404,
                 "message": "В корзине нет товаров"
