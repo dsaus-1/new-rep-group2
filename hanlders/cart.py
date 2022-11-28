@@ -1,7 +1,7 @@
 import json
 
 def put_product_to_cart(data):
-    with open('../data/catalog.json', encoding='utf-8') as json_file:
+    with open('data/catalog.json', encoding='utf-8') as json_file:
         catalog_list = json.load(json_file)
         cart_list = {}
         code = 404
@@ -21,7 +21,7 @@ def put_product_to_cart(data):
                     return f"'code': {code},\n'message': {message}"
 
     return f"'code': {code},\n'message': {message}"
-    with open('../data/cart.json', 'w') as f:
+    with open('data/cart.json', 'w') as f:
         json.dump(cart_list, f)
 
 
