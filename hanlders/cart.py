@@ -30,20 +30,22 @@ def get_cart(data):
     '''
      Функция по выводу корзины
     '''
-    with open('data/cart.json', encoding='utf-8') as read_file:
-        read_cart = json.load(read_file)
-        count = 0
-        output = []
-        if not size:
-            return {
-                "code": 404,
-                "message": "В корзине нет товаров"
-                }
+    size = os.path.getsize('data/cart.json')
+    if not size:
+        return {
+            "code": 404,
+            "message": "В корзине нет товаров"
+        }
+    else:
+        with open('data/cart.json', encoding='utf-8') as read_file:
+            read_cart = json.load(read_file)
+            count = 0
+            output = []
         for i in read_cart:
             count += 1
-            output.append(f"{count}. {i['name']} ({i['price']} руб/кг) добавлено {i['count']} штук")
+            output.append(f"{count}. {i['name']} ({i['price']} руб/кг) добавлено {i['num']} штук")
         return {
-            "code": 200,
-            "message": '\n'.join(output)
-        }
+                "code": 200,
+                "message": '\n'.join(output)
+                }
 
