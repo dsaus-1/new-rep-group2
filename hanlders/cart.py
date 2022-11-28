@@ -1,6 +1,7 @@
 import json
 
 def put_product_to_cart(data):
+    """Функция добавления продукта в корзину"""
     with open('data/catalog.json', encoding='utf-8') as json_file:
         catalog_list = json.load(json_file)
         cart_list = {}
